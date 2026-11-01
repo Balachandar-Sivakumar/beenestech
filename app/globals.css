@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Brand primaries: black + golden yellow. All text pairings pass WCAG AA. */
+  --color-ink-950: #0a0a0a;
+  --color-ink-900: #141414;
+  --color-ink-800: #1f1f1f;
+  --color-ink-700: #2e2e2e;
+  --color-honey-300: #ffd24d;
+  --color-honey-400: #f5b921; /* golden yellow — on black: 11.2:1 */
+  --color-honey-500: #e0a100;
+  --color-honey-700: #8a6100; /* text-on-white accent: 5.5:1 */
+
+  --color-whatsapp: #0e6f64; /* white text on it: 6.0:1 */
+  --color-whatsapp-dark: #0b5a51;
+
+  --animate-rotate-in: rotate-in 0.45s ease-out;
+  @keyframes rotate-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.5em);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem; /* keeps anchored headings clear of the sticky header */
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-white font-sans text-neutral-800 antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-honey-500;
+  }
+}
+
+@utility skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-honey-400 focus:px-4 focus:py-2 focus:font-semibold focus:text-ink-950;
+}
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 2xl:max-w-7xl;
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center text-center sm:whitespace-nowrap gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-honey-400 text-ink-950 hover:bg-honey-300;
+}
+@utility btn-secondary {
+  @apply btn border border-white/25 text-white hover:bg-white/10;
+}
+@utility btn-dark {
+  @apply btn bg-ink-950 text-white hover:bg-ink-800;
+}
+@utility eyebrow {
+  @apply text-sm font-semibold tracking-wide text-honey-700 uppercase;
+}
+@utility section-title {
+  @apply text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl;
+}
